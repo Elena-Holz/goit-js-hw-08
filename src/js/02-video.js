@@ -7,8 +7,9 @@ const player = new Player(iframe);
 player.on('play', function() {
     console.log('played the video!');
 });
-player.on('timeupdate', function () {
-    console.log("update");
+
+player.on('timeupdate', function (time) {
+    console.log("time", time);
 });
 
 // setTime();
