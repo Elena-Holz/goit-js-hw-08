@@ -10,7 +10,12 @@ player.on('play', function() {
     console.log('played the video!');
 });
 
+ if(localStorage.currentTime) {
+       player.currentTime = localStorage.currentTime
+    }
 
+    player.addEventListener('timeupdate', () => {localStorage.currentTime = player.currentTime
+});
 
 // player.on('timeupdate', function (time) {
 //     console.log("time", time);
@@ -29,13 +34,14 @@ player.on('play', function() {
 // function setTime() {}
 
 
-player.on('timeupdate', throttle(onPlay, 1000));
+// player.on('timeupdate', throttle(onPlay, 1000));
 
-function onPlay({ seconds }) {
-  localStorage.setItem('videoplayer-current-time', seconds);
-}
+// function onPlay({ seconds }) {
+//     localStorage.setItem('videoplayer-current-time', seconds);
+//     console.log(seconds);
+// }
 
-player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+// player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
 
 
 
