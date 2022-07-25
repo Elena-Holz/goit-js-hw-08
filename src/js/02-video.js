@@ -16,6 +16,10 @@ player.on('timeupdate', function (time) {
     console.log("time", time);
 });
 
+player.on('timeupdate', () => {
+    localStorage.currentTime = player.currentTime
+});
+
 // setTime();
 
 // player.on('timeupdate', throttle(setTimeToLocale, 1000));
@@ -25,7 +29,7 @@ player.on('timeupdate', function (time) {
 // function setTime() {}
 
 
-player.on('timeupdate', throttle(onPlay, 1000));
+// player.on('timeupdate', throttle(onPlay, 1000));
 
 // function onPlay({ seconds }) {
 //   localStorage.setItem('videoplayer-current-time', seconds);
