@@ -12,9 +12,9 @@ player.on('play', function() {
 
 
 
-// player.on('timeupdate', function (time) {
-//     console.log("time", time);
-// });
+player.on('timeupdate', function (time) {
+    console.log("time", time);
+});
 
 // setTime();
 
@@ -27,11 +27,11 @@ player.on('play', function() {
 
 player.on('timeupdate', throttle(onPlay, 1000));
 
-function onPlay({ seconds }) {
-  localStorage.setItem('videoplayer-current-time', seconds);
-}
+// function onPlay({ seconds }) {
+//   localStorage.setItem('videoplayer-current-time', seconds);
+// }
 
-player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+// player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
 
 
 
