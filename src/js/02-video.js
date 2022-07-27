@@ -17,6 +17,9 @@ function setTime({seconds}) {
     console.log("time", seconds);
      localStorage.setItem('videoplayer-current-time', seconds);
 };
-
+const saveTime = localStorage.getItem('videoplayer-current-time');
+if (saveTime) {
 player.setCurrentTime(localStorage.getItem('videoplayer-current-time'));
+}
+
 

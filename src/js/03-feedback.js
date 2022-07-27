@@ -3,7 +3,7 @@ import throttle from 'lodash.throttle';
 const form = document.querySelector('.feedback-form');
 const STORAGE_KEY = 'feedback-form-state';
 
-const formData = {};
+// const formData = {};
 
 form.addEventListener('submit', onSubmit);
 form.addEventListener('input', throttle(onInput, 500));
@@ -11,6 +11,17 @@ form.addEventListener('input', throttle(onInput, 500));
 updateForm();
 
 function onInput(e) {
+    let formData = localStorage.getItem(STORAGE_KEY);
+    formData = formData ? JSON.parse(formData) : {};
+    // if (formData) {
+    //     formData = JSON.parse(formData);
+    //     console.log(formData);
+    // } else {
+    //     FormData = {};
+    // }
+    // if (e.target.value = "") {
+    //     formData = '';
+    // }
     formData[e.target.name] = e.target.value;
     const formDataStringify = JSON.stringify(formData);
     localStorage.setItem(STORAGE_KEY, formDataStringify);
@@ -18,9 +29,11 @@ function onInput(e) {
 
 function onSubmit(e) {
     e.preventDefault();
-    formData.email = e.target.email.value;
-    formData.message = e.target.message.value;
-    console.log(formData);
+    // formData.email = e.target.email.value;
+    // formData.message = e.target.message.value;
+    const formData = new FormData(form);
+    formData.forEach((value, name) => console.log(value, name));
+    // console.log(formData);
     e.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
 };
