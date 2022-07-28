@@ -12,13 +12,14 @@ updateForm();
 
 function onInput(e) {
     let formData = localStorage.getItem(STORAGE_KEY);
+    // console.log(formData.email);
     formData = formData ? JSON.parse(formData) : {};
-    // if (formData) {
+    // if (formData.email !== null || formData.message !== null) {
     //     formData = JSON.parse(formData);
     //     console.log(formData);
     // } else {
-    //     FormData = {};
-    // }
+    //     formData = {};
+    
     // if (e.target.value = "") {
     //     formData = '';
     // }
