@@ -11,15 +11,15 @@ updateForm();
 function onInput(e) {
     let formData = localStorage.getItem(STORAGE_KEY);
     console.log(formData)
-    if (formData || formData !==null) {
-        formData = JSON.parse(formData)
-        // console.log(data)
-        // if (data.email) {
-        //     form.elements.email.value = data.email
-        // }
-        // if (data.message) {
-        //     form.elements.message.value = data.message
-        // }
+    if (formData) {
+        const data = JSON.parse(formData)
+        console.log(data)
+        if (data.email) {
+            form.elements.email.value = data.email
+        }
+        if (data.message) {
+            form.elements.message.value = data.message
+        }
     } else {
         formData = {}
 }
