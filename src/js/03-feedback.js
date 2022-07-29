@@ -5,24 +5,25 @@ const STORAGE_KEY = 'feedback-form-state';
 
 form.addEventListener('submit', onSubmit);
 form.addEventListener('input', throttle(onInput, 500));
+const formData = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.getItem(STORAGE_KEY)):{};
 
 updateForm();
 
 function onInput(e) {
-    let formData = localStorage.getItem(STORAGE_KEY);
-    console.log(formData)
-    if (formData) {
-        const data = JSON.parse(formData)
-        console.log(data)
-        if (data.email) {
-            form.elements.email.value = data.email
-        }
-        if (data.message) {
-            form.elements.message.value = data.message
-        }
-    } else {
-        formData = {}
-}
+    // let formData = localStorage.getItem(STORAGE_KEY);
+    // console.log(formData)
+    // if (formData) {
+    //     formData = JSON.parse(formData)
+    //     // console.log(data)
+    //     // if (data.email) {
+    //     //     form.elements.email.value = data.email
+    //     // }
+    //     // if (data.message) {
+    //     //     form.elements.message.value = data.message
+    //     // }
+    // } else {
+    //     formData = {}
+
     formData[e.target.name] = e.target.value;
     const formDataStringify = JSON.stringify(formData);
     localStorage.setItem(STORAGE_KEY, formDataStringify);
