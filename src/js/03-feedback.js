@@ -10,20 +10,6 @@ const formData = localStorage.getItem(STORAGE_KEY) ? JSON.parse(localStorage.get
 updateForm();
 
 function onInput(e) {
-    // let formData = localStorage.getItem(STORAGE_KEY);
-    // console.log(formData)
-    // if (formData) {
-    //     formData = JSON.parse(formData)
-    //     // console.log(data)
-    //     // if (data.email) {
-    //     //     form.elements.email.value = data.email
-    //     // }
-    //     // if (data.message) {
-    //     //     form.elements.message.value = data.message
-    //     // }
-    // } else {
-    //     formData = {}
-
     formData[e.target.name] = e.target.value;
     const formDataStringify = JSON.stringify(formData);
     localStorage.setItem(STORAGE_KEY, formDataStringify);
@@ -40,10 +26,16 @@ function onSubmit(e) {
 
 function updateForm(e) {
     const saveForm = localStorage.getItem(STORAGE_KEY);
-    const saveFormPars = JSON.parse(saveForm);
+   
     if (saveForm) {
-        form.elements.email.value = saveFormPars.email;
-        form.elements.message.value = saveFormPars.message;
-     console.log(saveFormPars);
-    };
-};
+        const saveFormPars = JSON.parse(saveForm);
+        if (saveFormPars.email) {
+            form.elements.email.value = saveFormPars.email;
+             console.log(saveFormPars);
+        };
+        if (saveFormPars.message) {
+            form.elements.message.value = saveFormPars.message;
+             console.log(saveFormPars);
+        }
+    }
+}
