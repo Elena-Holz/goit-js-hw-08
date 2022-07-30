@@ -24,18 +24,27 @@ function onSubmit(e) {
     localStorage.removeItem(STORAGE_KEY);
 };
 
+// function updateForm(e) {
+//     const saveForm = localStorage.getItem(STORAGE_KEY);
+//     if (saveForm) {
+//         const saveFormPars = JSON.parse(saveForm);
+//         if (saveFormPars.email) {
+//             form.elements.email.value = saveFormPars.email;
+//              console.log(saveFormPars);
+//         };
+//         if (saveFormPars.message) {
+//             form.elements.message.value = saveFormPars.message;
+//              console.log(saveFormPars);
+//         }
+//     }
+// }
 function updateForm(e) {
     const saveForm = localStorage.getItem(STORAGE_KEY);
-   
+    const saveFormPars = JSON.parse(saveForm);
     if (saveForm) {
-        const saveFormPars = JSON.parse(saveForm);
-        if (saveFormPars.email) {
-            form.elements.email.value = saveFormPars.email;
-             console.log(saveFormPars);
-        };
-        if (saveFormPars.message) {
-            form.elements.message.value = saveFormPars.message;
-             console.log(saveFormPars);
-        }
-    }
-}
+        form.elements.email.value = saveFormPars.email || "";
+        form.elements.message.value = saveFormPars.message || "";
+     console.log(saveFormPars);
+    };
+};
+
